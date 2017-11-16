@@ -8,16 +8,22 @@ public class Player : MonoBehaviour {
 
     public virtual void Move(float speed)
     {
+
+        
         float Xmove = Input.GetAxis("Horizontal");
         float Zmove = Input.GetAxis("Vertical");
 
-        transform.Translate(new Vector3(Xmove, 0f, Zmove) * speed * Time.deltaTime);
+        transform.position += (new Vector3(Xmove, 0f, Zmove) * speed * Time.deltaTime);
     }
 
+    public virtual void Power ()
+    {
+
+    }
 
 	// Use this for initialization
 	void Start () {
-        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        cam = GameObject.FindObjectOfType<Camera>();
 	}
 	
 	// Update is called once per frame
@@ -26,8 +32,10 @@ public class Player : MonoBehaviour {
         Vector3 mouse = Input.mousePosition;
         mouse = cam.ScreenToWorldPoint(new Vector3(mouse.x, mouse.y, 5f));
 
-        Move(5f);
+        
 
-        transform.LookAt(mouse);
+        transform.LookAt(new Vector3(mouse.x, transform.position.y, mouse.z));
 	}
+
+
 }
