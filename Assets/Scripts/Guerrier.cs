@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class Guerrier : Player {
 
-    public override void Move(float speed)
-    {
 
+    protected override void Update()
+    {
+        base.Update();
+        Move(3f);
+       
     }
 
-    private void Update()
+    public override void Effect()
     {
-        Move(5f);
+
+        _Multiplicateur = 2f;
     }
+
+    
 }
