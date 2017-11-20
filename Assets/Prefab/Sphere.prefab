@@ -165,6 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a53da66d35308e419bdd470f7adf5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ball: {fileID: 1222579320123828}
+  StartPos: {fileID: 4866300002921956, guid: 646e59242454adc4481099874183aa52, type: 2}
   speed: 3
   rotSpeed: 800
   Multiplicateur: 1.1

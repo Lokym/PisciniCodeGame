@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Mage : Player {
 
+    private float _startSpeed;
 
     protected override void Update()
     {
@@ -14,15 +15,15 @@ public class Mage : Player {
 
     public override void Effect()
     {
-        Debug.Log("Ralenti");
-        Time.timeScale = 0.3f;
+        _startSpeed = ball.speed;
+        ball.speed = ball.speed / 2;
         StartCoroutine(Timer());
         
     }
 
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(0.5f);
-        Time.timeScale = 1f;
+        yield return new WaitForSeconds(1f);
+        ball.speed = _startSpeed;
     }
 }

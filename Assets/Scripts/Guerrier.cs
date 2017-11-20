@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Guerrier : Player {
 
-
+    public bool SpellCD = false;
     protected override void Update()
     {
         base.Update();
@@ -14,9 +14,23 @@ public class Guerrier : Player {
 
     public override void Effect()
     {
+        if (!SpellCD)
+        {
+            SpellCD = true;
+            _Multiplicateur = 1.5f;
+            StartCoroutine(TimerSpell());
+        }
 
-        _Multiplicateur = 2f;
+       
     }
 
+    IEnumerator TimerSpell()
+    {
+        _Multiplicateur = 1.5f;
+        yield return new WaitForSeconds(3f);
+        _Multiplicateur = 1.1f;
+        yield return new WaitForSeconds(3f);
+        SpellCD = false;
+    }
     
 }

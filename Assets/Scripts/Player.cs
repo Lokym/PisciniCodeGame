@@ -62,6 +62,8 @@ public class Player : NetworkBehaviour {
 	// Update is called once per frame
 	protected virtual void Update () {
 
+
+        CmdInitiate();
         if (!Lock)
         {
             Vector3 mouse = Input.mousePosition;
@@ -90,7 +92,7 @@ public class Player : NetworkBehaviour {
 
         if (collision.gameObject.tag == "ball")
         {
-
+           
             Knockback();
             gameObject.GetComponent<Rigidbody>().AddForce(_knockaback * transform.forward);
             ball.speed = ball.speed*_Multiplicateur;
